@@ -7,6 +7,7 @@ This plugin allows you to specify requirements for your tests and collect them w
 
 ## Features
 - ✅ addoption `--collect-requirements` to collect requirements without running tests
+- ✅ addoption `--save-to` to specify the output file path for collected requirements (default: `logs/test_requirements.json`)
 - ✅ Collect requirements from tests using the `@requirements()` marker
 - ✅ Flexible keyword arguments support for any requirement metadata (e.g., cloud instances, regions, resources)
 - ✅ Automatic collection and store the requirements in json file
@@ -63,7 +64,7 @@ def test_requirements2():
 
 ### Custom Requirement Parameters
 
-The `@requirements()` marker accepts any keyword arguments, allowing you to define custom requirement metadata:
+The `@pytest.mark.requirements()` marker accepts any keyword arguments, allowing you to define custom requirement metadata:
 
 ```python
 import pytest
@@ -76,6 +77,26 @@ import pytest
 )
 def test_with_custom_requirements():
     assert 1 == 1
+```
+
+```python
+import pytest
+from _pytest.fixtures import FixtureRequest
+
+def requirements(cloud_instance: str, region: str) -> pytest.MarkDecorator:
+    return pytest.mark.requirements(
+        cloud_instance=cloud_instance,
+        region=region,
+    )
+
+
+@requirements(
+    cloud_instance="c5.large",
+    region="eu-west-1",
+)
+def test_requirements_with_static_parameters(request: FixtureRequest):
+    assert request.config._selected_requirements[request.node.nodeid]['region'] == "eu-west-1"
+
 ```
 
 ---
