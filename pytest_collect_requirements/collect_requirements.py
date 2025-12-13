@@ -4,6 +4,8 @@ from _pytest.main import Session
 from _pytest.python import Function
 from custom_python_logger import get_logger, json_pretty_format
 
+from pytest_collect_requirements.helper import write_text
+
 logger = get_logger(__name__)
 
 
@@ -12,6 +14,12 @@ def pytest_addoption(parser: Parser) -> None:
         "--collect-requirements",
         action="store_true",
         help="Collect infrastructure requirements only",
+    )
+    parser.addoption(
+        "--save-to",
+        action="store",
+        default="logs/test_requirements.json",
+        help="Path to save collected requirements",
     )
 
 
@@ -51,3 +59,8 @@ def pytest_collection_finish(session: Session) -> None:
         _selected_requirements[item.nodeid] = _all_requirements[item.nodeid]
     session.config._selected_requirements = _selected_requirements  # pylint: disable=W0212
     logger.debug(f"Collected requirements: {json_pretty_format(_selected_requirements)}")
+
+    write_text(
+        text=json_pretty_format(_selected_requirements),
+        filename=session.config.getoption("--save-to")
+    )
