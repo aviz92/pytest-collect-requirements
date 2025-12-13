@@ -175,3 +175,7 @@ cython_debug/
 
 # Aditional directories and files to ignore
 logs/
+
+
+# UV
+uv.lock
