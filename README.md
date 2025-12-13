@@ -1,6 +1,7 @@
 # pytest-collect-requirements
 
-A pytest plugin to collect test requirements from external sources and parameterize tests accordingly.
+A pytest plugin to collect test requirements from tests marked with the `@pytest.mark.requirements(...)` marker. <br>
+This plugin allows you to specify requirements for your tests and collect them without executing the tests themselves.
 
 ---
 
