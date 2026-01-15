@@ -1,13 +1,14 @@
 # pytest-collect-requirements
 
 A pytest plugin to collect test requirements from tests marked with the `@pytest.mark.requirements(...)` marker. <br>
-This plugin allows you to specify requirements for your tests and collect them without executing the tests themselves.
+This plugin allows you to specify requirements for your tests and collect them without executing the tests themselves as default behavior. <br>
 
 ---
 
 ## Features
 - ✅ addoption `--collect-requirements` to collect requirements without running tests
 - ✅ addoption `--save-to` to specify the output file path for collected requirements (default: `logs/test_requirements.json`)
+- ✅ addoption `--execute-tests` to run tests after collecting requirements
 - ✅ Collect requirements from tests using the `@pytest.mark.requirements()` marker
 - ✅ Flexible keyword arguments support for any requirement metadata (e.g., cloud instances, regions, resources)
 - ✅ Automatic collection and store the requirements in json file

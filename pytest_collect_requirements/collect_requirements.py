@@ -21,6 +21,11 @@ def pytest_addoption(parser: Parser) -> None:
         default="logs/test_requirements.json",
         help="Path to save collected requirements",
     )
+    parser.addoption(
+        "--execute-tests",
+        action="store_true",
+        help="Execute tests after collecting requirements",
+    )
 
 
 def pytest_configure(config: Config) -> None:
@@ -64,3 +69,6 @@ def pytest_collection_finish(session: Session) -> None:
         text=json_pretty_format(_selected_requirements),
         filename=session.config.getoption("--save-to")
     )
+    if session.config.getoption("--execute-tests"):
+        return
+    pytest.exit("Collected requirements and saved to file.", returncode=0)
