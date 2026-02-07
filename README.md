@@ -1,3 +1,12 @@
+![PyPI version](https://img.shields.io/pypi/v/pytest-collect-requirements)
+![Python](https://img.shields.io/badge/python->=3.12-blue)
+![Development Status](https://img.shields.io/badge/status-stable-green)
+![Maintenance](https://img.shields.io/maintenance/yes/2026)
+![PyPI](https://img.shields.io/pypi/dm/pytest-collect-requirements)
+![License](https://img.shields.io/pypi/l/pytest-collect-requirements)
+
+---
+
 # pytest-collect-requirements
 
 A pytest plugin to collect test requirements from tests marked with the `@pytest.mark.requirements(...)` marker. <br>
