@@ -2,7 +2,9 @@ import pytest
 from _pytest.fixtures import FixtureRequest
 from custom_python_logger import get_logger
 
-logger = get_logger(__name__)
+from pytest_collect_requirements.const import LOGGER_NAME
+
+logger = get_logger(LOGGER_NAME)
 
 
 def requirements(cloud_instance: str, region: str) -> pytest.MarkDecorator:

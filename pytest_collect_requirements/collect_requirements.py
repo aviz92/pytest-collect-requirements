@@ -4,9 +4,10 @@ from _pytest.main import Session
 from _pytest.python import Function
 from custom_python_logger import get_logger, json_pretty_format
 
+from pytest_collect_requirements import LOGGER_NAME
 from pytest_collect_requirements.helper import write_text
 
-logger = get_logger(__name__)
+logger = get_logger(LOGGER_NAME)
 
 
 def pytest_addoption(parser: Parser) -> None:

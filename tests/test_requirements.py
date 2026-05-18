@@ -1,7 +1,9 @@
 import pytest
 from custom_python_logger import get_logger
 
-logger = get_logger(__name__)
+from pytest_collect_requirements import LOGGER_NAME
+
+logger = get_logger(LOGGER_NAME)
 
 
 @pytest.mark.integration
