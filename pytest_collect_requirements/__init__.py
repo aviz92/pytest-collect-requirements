@@ -1,7 +1,7 @@
 from custom_python_logger import get_logger
 from dotenv import load_dotenv
 
-from pytest_collect_requirements.const import LOGGER_NAME
+from pytest_collect_requirements.consts import LOGGER_NAME
 
 load_dotenv()
 

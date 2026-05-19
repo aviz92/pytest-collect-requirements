@@ -2,7 +2,7 @@ import pytest
 from _pytest.fixtures import FixtureRequest
 from custom_python_logger import get_logger
 
-from pytest_collect_requirements.const import LOGGER_NAME
+from pytest_collect_requirements.consts import LOGGER_NAME
 
 logger = get_logger(LOGGER_NAME)
 
